@@ -1,12 +1,12 @@
 function getBob() {
-    return "Bob3";
+    return 'Bob3';
 }
 
 function getSue() {
-    return "Sue";
+    return 'Sue';
 }
 
 module.exports = {
-    "getBob": getBob,
-    "getSue": getSue
+    getBob,
+    getSue
 };

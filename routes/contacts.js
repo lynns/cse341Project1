@@ -46,7 +46,7 @@ router.delete('/:id', async (req, res, next) => {
     try {
         const contact = await contactController.deleteContact(req.params.id);
         res.json(contact);
-    } catch {
+    } catch (err) {
         next(err);
     }
 });
@@ -55,7 +55,7 @@ router.delete('/', async (req, res, next) => {
     try {
         const contact = await contactController.deleteAllContacts();
         res.json(contact);
-    } catch {
+    } catch (err) {
         next(err);
     }
 });

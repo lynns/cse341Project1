@@ -1,14 +1,14 @@
 const express = require('express');
 const app = express();
 const mongodb = require('./db/connect');
-const routes = require("./routes");
+const routes = require('./routes');
 
 app.use(express.json());
 app.use('/', routes);
 
 const port = process.env.PORT || 3000;
 
-mongodb.initDb(err => {
+mongodb.initDb((err) => {
     if (err) {
         console.log(err);
         return;
@@ -17,4 +17,3 @@ mongodb.initDb(err => {
         console.log(`Server started on port ${port}`);
     });
 });
-
