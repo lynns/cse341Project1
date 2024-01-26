@@ -10,10 +10,10 @@ router.get('/sue', (req, res) => {
 
 router.use('/contacts', require('./contacts'));
 
-// Global Error Handling
-router.use((err, req, res) => {
-    console.log('Error', err);
-    res.status(500).json({ error: err.message || 'Error' });
-});
+// // Global Error Handling
+// router.use((err, req, res) => {
+//     console.log('Error', err);
+//     res.status(500).json({ error: err.message || 'Error' });
+// });
 
 module.exports = router;
