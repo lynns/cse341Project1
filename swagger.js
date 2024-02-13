@@ -5,7 +5,7 @@ const doc = {
         title: 'Bro Lynn API',
         description: 'Description'
     },
-    host: 'localhost:3000'
+    host: 'cse341project1-hdyf.onrender.com'
 };
 
 const outputFile = './swagger-output.json';
