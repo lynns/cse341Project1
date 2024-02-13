@@ -4,7 +4,9 @@ const mongodb = require('./db/connect');
 const routes = require('./routes');
 const swagger = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-output.json');
+const cors = require('cors');
 
+app.use(cors());
 app.use(express.json());
 app.use('/', routes);
 app.use('/api-docs', swagger.serve, swagger.setup(swaggerDocument));
