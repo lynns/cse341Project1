@@ -5,13 +5,25 @@ const routes = require('./routes');
 const swagger = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-output.json');
 const cors = require('cors');
+const dotenv = require('dotenv');
+dotenv.config();
+const { auth } = require('express-openid-connect');
+
+const port = process.env.PORT || 3000;
+const config = {
+    authRequired: false,
+    auth0Logout: true,
+    baseURL: `http://localhost:${port}`,
+    clientID: process.env.CLIENT_ID,
+    issuerBaseURL: `https://${process.env.ISSUER_BASE_URL}`,
+    secret: process.env.SECRET
+};
 
 app.use(cors());
 app.use(express.json());
+app.use(auth(config));
 app.use('/', routes);
 app.use('/api-docs', swagger.serve, swagger.setup(swaggerDocument));
-
-const port = process.env.PORT || 3000;
 
 mongodb.initDb((err) => {
     if (err) {
