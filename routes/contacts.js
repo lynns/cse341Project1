@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const contactController = require('../controllers/contacts');
-const { requiresAuth } = require('express-openid-connect');
+const userController = require('../controllers/user');
 
-router.get('/', requiresAuth(), async (req, res, next) => {
+router.get('/', userController.fetchUserMiddleware, async (req, res, next) => {
+    console.dir(req.userInfo);
+
     try {
         const contacts = await contactController.getContacts();
         res.json(contacts);
